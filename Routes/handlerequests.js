@@ -20,6 +20,22 @@ router.post('/submit', async (req, res) => {
 
 });
 
+router.get('/getpreview/:id', async (req, res) => {
+    try {
+        const { id } = req.params; 
+        const formdata = await Form.findById(id);
+
+        if (!formdata) {
+            return res.status(404).json({ message: 'Form not found' });
+        }
+
+        res.status(200).json(formdata);
+    } catch (error) {
+        console.error('Error fetching form by ID:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 router.post('/getpreview', async (req, res) => {
     try {
         const { email } = req.body;
