@@ -14,9 +14,10 @@ router.post('/submit', async (req, res) => {
         await newForm.save();
         res.status(201).json({ message: 'Form submitted successfully' });
     } catch (error) {
-        console.error('Error submitting form:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
+    console.error('Error submitting form:', error); 
+    res.status(500).json({ message: error.message, stack: error.stack });
+}
+
 });
 
 router.post('/getpreview', async (req, res) => {
