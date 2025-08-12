@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: 'https://form-application-frontend.vercel.app/', 
+  origin: 'https://form-application-frontend.vercel.app', 
 }));
 app.use(express.json());
 
